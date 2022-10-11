@@ -45,27 +45,11 @@ def Combined_dataset_label_map_level_2(combined_dataset):
 
   return combined_dataset
 
-#evaluation metrics
-#takes list of true label, list of predicted label and model that is used to predict labels
-#returns evaluation score and saves confusion matrix to output directory
-def eval_metrics(true,pred,rf_model):
+#train and test spli
+#takes dataset and returns test and train set
+def train_test_split(dataset):
 
-  accuracy = accuracy_score(true,pred)
-  precision = precision_score(true,pred,pos_label='positive',average='macro')
-  recall = recall_score(true,pred,pos_label='positive',average='macro')
-  f1 = f1_score(true,pred,pos_label='positive',average='macro')
-  roc = roc_auc_score(true, rf_model.predict_proba(true),average='macro',multi_class='ovr')
-  mcc = matthews_corrcoef(true,pred)
+  X = dataset.drop(['nuclear_receptor'],axis=1).values
+  y = dataset['nuclear_receptor'].values
 
-  matrix = confusion_matrix(true,pred)
-
-  plt.rcParams["figure.figsize"] = (20,8)
-  sns.set(font_scale=1.4)
-  sns.heatmap(matrix, annot=True, annot_kws={'size':10},
-              cmap=plt.cm.Greens, linewidths=0.2,fmt='g')
-  plt.xlabel('Predicted label')
-  plt.ylabel('True label')
-
-  plt.savefig('confusion_matrix.png')
-
-  return accuracy,precision,recall,f1,roc,mcc
+  return train_test_split(X, y, test_size = 0.3,stratify=y)
