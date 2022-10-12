@@ -2,6 +2,8 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 from sklearn.metrics import matthews_corrcoef
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
+
 
 def eval_metrics(true,pred,rf_model):
 
@@ -22,10 +24,16 @@ def eval_metrics(true,pred,rf_model):
   plt.xlabel('Predicted label')
   plt.ylabel('True label')
 
-  plt.savefig('confusion_matrix.png')
+  if os.path.exists('output/confusion_matrix_level_1.png'):
+    plt.savefig('output/confusion_matrix_level_1.png', bbox_inches = "tight")
+  else:
+    plt.savefig('output/confusion_matrix_level_2.png', bbox_inches = "tight")
 
   #save evaluation metrics of the model to text file
-  output_file = open("model_evaluation.txt","w")
+  if os.path.exists('output/model_evaluation_level_1.txt'):
+    output_file = open("output/model_evaluation_level_1.txt",'w')
+  else:
+    output_file = open("output/model_evaluation_level_2.txt",'w')
 
   output_file.write("Accuracy: " + str("{:.4f}".format(accuracy)) + "\n")
   output_file.write("Presicion: " + str("{:.4f}".format(precision)) + "\n")

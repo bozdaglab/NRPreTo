@@ -29,7 +29,7 @@ def hyperparameter_tune(X_train,y_train):
         return loss
     
     # Run the algorithm - test max evals
-    best = fmin(fn=objective,space=space, max_evals=150, algo=tpe.suggest)
+    best = fmin(fn=objective,space=space, max_evals=50, algo=tpe.suggest)
 
     max_depth = int(best['max_depth'])
     max_samples = best['max_samples']

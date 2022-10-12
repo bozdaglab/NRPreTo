@@ -53,3 +53,16 @@ def train_test_split(dataset):
   y = dataset['nuclear_receptor'].values
 
   return train_test_split(X, y, test_size = 0.3,stratify=y)
+
+#get index of HPRD and refseq dataset in order to filter True Positive prediction only
+#takes external dataset and predicted label of external dataset
+#return external dataset will True Positive label only
+def select_true_positive_only(external_dataset,external_dataset_pred):
+  dataset_index = external_dataset['nuclear_receptor']
+  #zip true, pred label with index and select only true positive
+  pred_idx = list(zip(dataset_index.index.tolist(),dataset_index.tolist() ,external_dataset_pred.tolist()))
+  true_positive_idx = [idx for idx,true,pred in pred_idx if pred!=0 and true==pred]
+  #select data points with True Positive prediction only
+  true_positive_label_only = external_dataset.loc[true_positive_idx]
+
+  return true_positive_label_only
