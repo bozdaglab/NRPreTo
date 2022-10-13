@@ -44,8 +44,8 @@ def RF_model(a,b,combined_df,hprd_df,refseq_df):
     refseq_tuned_model_pred = tuned_RF_model.predict(refseq_imp_feat_df.drop(['nuclear_receptor'],axis=1).values)
 
     #get tuned model evaluation on HPRD and Refseq dataset
-    eval_metrics(hprd_imp_feat_df['nuclear_receptor'].values,hprd_tuned_model_pred, tuned_RF_model)
-    eval_metrics(refseq_imp_feat_df['nuclear_receptor'].values,refseq_tuned_model_pred,tuned_RF_model)
+    eval_metrics(hprd_imp_feat_df['nuclear_receptor'].values,hprd_tuned_model_pred, tuned_RF_model,"HPRD")
+    eval_metrics(refseq_imp_feat_df['nuclear_receptor'].values,refseq_tuned_model_pred,tuned_RF_model,"Refseq")
     
     hprd_pred = hprd_tuned_model_pred
     refseq_pred = refseq_tuned_model_pred   
@@ -59,10 +59,10 @@ def RF_model(a,b,combined_df,hprd_df,refseq_df):
     refseq_base_model_pred = base_RF_model.predict(refseq_imp_feat_df.drop(['nuclear_receptor'],axis=1).values)
 
     #get base model evaluation on HPRD and Refseq dataset
-    eval_metrics(hprd_imp_feat_df['nuclear_receptor'].values,hprd_base_model_pred,base_RF_model)
-    eval_metrics(refseq_imp_feat_df['nuclear_receptor'].values,refseq_base_model_pred,base_RF_model)
+    eval_metrics(hprd_imp_feat_df['nuclear_receptor'].values,hprd_base_model_pred,base_RF_model,"HPRD")
+    eval_metrics(refseq_imp_feat_df['nuclear_receptor'].values,refseq_base_model_pred,base_RF_model,"Refseq")
 
-    hprd_pred = hprd_tuned_model_pred
-    refseq_pred = refseq_tuned_model_pred 
+    hprd_pred = hprd_base_model_pred
+    refseq_pred = refseq_base_model_pred 
   
   return hprd_pred, refseq_pred

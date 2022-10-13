@@ -5,7 +5,7 @@ import seaborn as sns
 import os
 
 
-def eval_metrics(true,pred,rf_model):
+def eval_metrics(true,pred,rf_model,dataset_name):
 
   accuracy = accuracy_score(true,pred)
   precision = precision_score(true,pred,pos_label='positive',average='macro')
@@ -25,15 +25,17 @@ def eval_metrics(true,pred,rf_model):
   plt.ylabel('True label')
 
   if os.path.exists('output/confusion_matrix_level_1.png'):
-    plt.savefig('output/confusion_matrix_level_1.png', bbox_inches = "tight")
+    plt.savefig('output/confusion_matrix_level_2.png')
+    plt.close()
   else:
-    plt.savefig('output/confusion_matrix_level_2.png', bbox_inches = "tight")
-
+    plt.savefig('output/confusion_matrix_level_1.png')
+    plt.close()
+  
   #save evaluation metrics of the model to text file
-  if os.path.exists('output/model_evaluation_level_1.txt'):
-    output_file = open("output/model_evaluation_level_1.txt",'w')
+  if os.path.exists('output/' + dataset_name + 'model_evaluation_level_1.txt'):
+    output_file = open('output/' + dataset_name + 'model_evaluation_level_2.txt','w')
   else:
-    output_file = open("output/model_evaluation_level_2.txt",'w')
+    output_file = open('output/' + dataset_name + 'model_evaluation_level_1.txt','w')
 
   output_file.write("Accuracy: " + str("{:.4f}".format(accuracy)) + "\n")
   output_file.write("Presicion: " + str("{:.4f}".format(precision)) + "\n")
