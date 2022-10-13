@@ -7,22 +7,20 @@ sys.path.append('/content/drive/MyDrive/Sirisha_model_check/GItHub') #for test o
 from RF_model import *
 import argparse
 
-# parser = argparse.ArgumentParser()
-# parser.add_argument('--feature_selection', type=int, required=False, default= 1)
-# parser.add_argument('--hyperparameter_tune', type=int, required=False, default= 1)
-# args = parser.parse_args()
+parser = argparse.ArgumentParser()
+parser.add_argument('--feature_selection', type=int, required=False, default= 1)
+parser.add_argument('--hyperparameter_tune', type=int, required=False, default= 1)
+args = parser.parse_args()
 
-a = 0
-b = 0
 
 #read train,independent,hprd and refseq dataset
-train_lvl1 = '/content/drive/MyDrive/Sirisha_model_check/GItHub/Data/subset_of_lvl1_train_dataset.csv'
-indep_lvl1 = '/content/drive/MyDrive/Sirisha_model_check/GItHub/Data/subset_of_lvl1_independent_dataset.csv'
-train_lvl2 = '/content/drive/MyDrive/Sirisha_model_check/GItHub/Data/subset_of_lvl2_train_dataset.csv'
-indep_lvl2 = '/content/drive/MyDrive/Sirisha_model_check/GItHub/Data/subset_of_lvl2_independent_dataset.csv'
+train_lvl1 = 'Data/subset_of_lvl1_train_dataset.csv'
+indep_lvl1 = 'Data/subset_of_lvl1_independent_dataset.csv'
+train_lvl2 = 'Data/subset_of_lvl2_train_dataset.csv'
+indep_lvl2 = 'Data/subset_of_lvl2_independent_dataset.csv'
 
-hprd = '/content/drive/MyDrive/Sirisha_model_check/GItHub/Data/subset_of_HPRD_dataset.csv'
-refseq = '/content/drive/MyDrive/Sirisha_model_check/GItHub/Data/subset_of_Refseq_dataset.csv'
+hprd = 'Data/subset_of_HPRD_dataset.csv'
+refseq = 'Data/subset_of_Refseq_dataset.csv'
 
 #combine train and indep dataset to train level-1 model
 combined_level1_df = combined_data(train_lvl1,indep_lvl1)
@@ -41,7 +39,7 @@ refseq_df = HPRD_Refseq_label_map_level_1(refseq)
 #following level will also returns list of predicted label for HPRD and refseq dataset
 #evaluation results(confusion matrix and result table) will be saved inside 'Output' folder
 print('Training and Testing Level-1 RF model')
-hprd_pred_level_1,refseq_pred_level_1 = RF_model(a,b,combined_level1_df,hprd_df,refseq_df)
+hprd_pred_level_1,refseq_pred_level_1 = RF_model(args.feature_selection,args.hyperparameter_tune,combined_level1_df,hprd_df,refseq_df)
 
 #-------------------LEVEL-2 Model (sub-NRs (NR0,NR1,NR2,NR3,NR4,NR5 and NR6) prediction)------------------------
 #combine train and indep dataset to train level-1 model
@@ -65,5 +63,5 @@ print('Training and Testing Level-2 RF model')
 if hprd_TP_only.shape[1] or refseq_TP_only.shape[1] == 0:
   print('Cannot proceed to level 2 predict as level 1 model did not predited any True Positive. Try feature selection and Hyperparameters tuning.')
 else:
-  RF_model(a,b,combined_level2_df,hprd_TP_only,refseq_TP_only)
+  RF_model(args.feature_selection,args.hyperparameter_tune,combined_level1_df,combined_level2_df,hprd_TP_only,refseq_TP_only)
 print('Complete !!!')
