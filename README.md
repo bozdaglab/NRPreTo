@@ -1,5 +1,5 @@
 
-# NRPreTo (a 2 level NR protein clasification tool)
+# NRPreTo (a two level NR protein clasification tool)
 
 NRPreTo is a two level Nuclear Receptor(NR) protein subfamily classification tool in which the first level 
 predicts whether a protein is a NR or not and second level predicts the sub-class of the said NR proteins.
