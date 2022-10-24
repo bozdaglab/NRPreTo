@@ -39,10 +39,10 @@ To run NRPreTo with different combination of settings at both level, run the fol
   #for example if user wants to perform hyper-parameters tune but not feature selection, execute following line of code
   python3 main.py --feature_selection = 0 --hyperparameter_tune = 1
 ```
-## How to genrate descriptors using iFeature package
+## How to generate descriptors using iFeature package
 
 Feature generation was done using the standalone version of iFeature package as per the instructions described in the github repository at https://github.com/Superzchen/iFeature. iFeature is an open source Python-based toolkit for generating a multitude of descriptors for protein and peptide sequences. 
-For this study we calculated 13,494 descriptors which belong to seven descriptor groups shown in table 6. We downloaded iFeature package provided in their github repository locally and followed the instructions to calculate the above mentioned seven descriptor group individually which were concatenated later leading to 13,494 descriptors.  
+For this study we calculated 13,494 descriptors which belong to seven descriptor groups shown in table 6. We downloaded iFeature package provided in their github repository locally and followed the instructions to calculate each of the seven descriptor group individually which were later concatenated resulting in 13,494 descriptors for each protein. This procedure was used for each of the training, independent and external test set proteins.
 
 ## Data Folder
 
