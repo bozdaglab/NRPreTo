@@ -5,14 +5,28 @@ from sklearn.model_selection import RandomizedSearchCV
 from hyperopt import tpe, hp, fmin, STATUS_OK,Trials
 from hyperopt.pyll.base import scope
 from sklearn.model_selection import cross_val_score
+from configparser import ConfigParser
 
 
 def hyperparameter_tune(X_train,y_train):
+
+    #Read config.ini file
+    config_object = ConfigParser()
+    config_object.read("config.ini")
+
+    #Get the password
+    n_estimator = config_object["n_estimator"]
+    max_depth = config_object["max_depth"]
+    min_samples_leaf = config_object["min_samples_leaf"]
+    min_samples_split = config_object["min_samples_split"]
+    max_samples = config_object["max_samples"]
     
     # Set up space dictionary with specified hyperparameters
-    space = {'n_estimators': hp.uniform('n_estimators', 75,150),
-            'max_depth': hp.uniform('max_depth', 1,100),'min_samples_leaf': hp.uniform('min_samples_leaf', 1,10),
-            'min_samples_split': hp.uniform('min_samples_split', 2,10),'max_samples': hp.uniform('max_samples',0,1),
+    space = {'n_estimators': hp.uniform('n_estimators', int(n_estimator['low']),int(n_estimator['high'])),
+            'max_depth': hp.uniform('max_depth', int(max_depth['low']),int(max_depth['high'])),
+             'min_samples_leaf': hp.uniform('min_samples_leaf', int(min_samples_leaf['low']),int(min_samples_leaf['high'])),
+            'min_samples_split': hp.uniform('min_samples_split', int(min_samples_split['low']),int(min_samples_split['high'])),
+             'max_samples': hp.uniform('max_samples',int(max_samples['low']),int(max_samples['high'])),
             'warm_start': hp.choice('warm_start',[True, False])}
     
     # Set up objective function

@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 import sys
-sys.path.append('/content/drive/MyDrive/Sirisha_model_check/GItHub') #for test only
 
 from RF_model import *
 import argparse
