@@ -44,6 +44,30 @@ To run NRPreTo with different combination of settings at both level, run the fol
 Feature generation was done using the standalone version of iFeature package as per the instructions described in the github repository at https://github.com/Superzchen/iFeature. iFeature is an open source Python-based toolkit for generating a multitude of descriptors for protein and peptide sequences. 
 For this study we calculated 13,494 descriptors which belong to seven descriptor groups shown in table 6. We downloaded iFeature package provided in their github repository locally and followed the instructions to calculate each of the seven descriptor group individually which were later concatenated resulting in 13,494 descriptors for each protein. This procedure was used for each of the training, independent and external test set proteins.
 
+
+
+python iFeature.py --file protein.txt --type AAC --out AAC.tsv
+python iFeature.py --file protein.txt --type CKSAAP --out CKSAAP.tsv
+python iFeature.py --file protein.txt --type DPC --out DPC.tsv
+python iFeature.py --file protein.txt --type DDE --out DDE.tsv
+python iFeature.py --file protein.txt --type TPC --out TPC.tsv
+python iFeature.py --file protein.txt --type GAAC --out GAAC.tsv
+python iFeature.py --file protein.txt --type CKSAAGP --out CKSAAGP.tsv
+python iFeature.py --file protein.txt --type GDPC --out GDPC.tsv
+python iFeature.py --file protein.txt --type GTPC --out GTPC.tsv
+python iFeature.py --file protein.txt --type MORAN --out MORAN.tsv
+python iFeature.py --file protein.txt --type Geary --out Geary.tsv
+python iFeature.py --file protein.txt --type NMBroto --out NMBroto.tsv
+python iFeature.py --file protein.txt --type CTDC --out CTDC.tsv
+python iFeature.py --file protein.txt --type CTDT --out CTDT.tsv
+python iFeature.py --file protein.txt --type CTDD --out CTDD.tsv
+python iFeature.py --file protein.txt --type CTriad --out CTriad.tsv
+python iFeature.py --file protein.txt --type KSCTriad --out KSCTriad.tsv
+python iFeature.py --file protein.txt --type SOCNumber --out SOCNumber.tsv
+python iFeature.py --file protein.txt --type QSOrder --out QSOrder.tsv
+python iFeature.py --file protein.txt --type PAAC --out PAAC.tsv
+python iFeature.py --file protein.txt --type APAAC --out APAAC.tsv
+
 ## Data Folder
 
 We have provided subsets of following dataset for user to test NRPreTo.
