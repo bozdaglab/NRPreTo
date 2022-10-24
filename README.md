@@ -2,9 +2,7 @@
 # NRPreTo (a two level NR protein clasification tool)
 NRPreTo is a two level Nuclear Receptor (NR) protein subfamily classification tool in which the first level predicts whether a protein sequence is a NR or not and second level predicts the sub-class of the said NR proteins.Only true positive proteins predicted as NRs at level-1 are taken ahead for the second level prediction.Feature selection was done at both levels independently to select important descriptors from an initial 13,494 descriptors calculated using iFeature package.We also performed hyper-parameters tuning at each level to obtained best performing model. NRPreTo successfully predicted 59 novel NR from human proteome when tested on HRPD and Refseq datasets.
 
-<p style="text-align:center;"><img src="NrPreTo_workflow.png" width="50%" height="50%" class="center">
-</p>
-NrPreTo Workflow
+<img src="NrPreTo_workflow.png" width="50%" height="50%" class="centerImage" alt="CH Logo" title="NrPreTo Workflow">
 
 ## Requirements
 
