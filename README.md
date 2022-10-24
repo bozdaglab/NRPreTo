@@ -101,7 +101,7 @@ This script is comprised of helper functions that are used to build the method.
 #### model_eval.py
 This script is used to evaluate model at 2 different levels. This scripts provides both confusion matrix and model performance in terms of F1, Accuracy, Presicion, Recall, ROC-AUC score and Mathews Correlation Coefficient.
 
-#### conf.int
+#### config.ini
 This is a configuration file for hyper-parameters tuning script (feature_rank.py). User can change hyper-paramter range by editing following this file.
 
 ## Run Locally
