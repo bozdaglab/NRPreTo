@@ -1,11 +1,8 @@
 
 # NRPreTo (a two level NR protein clasification tool)
 
-NRPreTo is a two level Nuclear Receptor(NR) protein subfamily classification tool in which the first level 
-predicts whether a protein is a NR or not and second level predicts the sub-class of the said NR proteins.
-Only true positive proteins predicted as NRs at level-1 are taken ahead for the second level prediction. During the
-study we performed feature selection to select important features out of 13,495 features at both level independently.
-We also performed hyper-parameters tuning at each level to obtained best performing model. NRPreTo has successfully novel NR from human proteome when tested on HRPD and Refseq Datasets(human).
+NRPreTo is a two level Nuclear Receptor (NR) protein subfamily classification tool in which the first level  predicts whether a protein sequence is a NR or not and second level predicts the sub-class of the said NR proteins.Only true positive proteins predicted as NRs at level-1 are taken ahead for the second level prediction.Feature selection was done at both levels independently to select important descriptors from an initial 13,494 descriptors calculated using iFeature package.We also performed hyper-parameters tuning at each level to obtained best performing model. NRPreTo has successfully predicted 59 novel NR from human proteome when tested on HRPD and Refseq datasets.
+
 ## Requirements
 
 Following python libraries must be installed in the system in order to run NRPreTo:
@@ -54,6 +51,11 @@ Both benchmark datasets were prepared from the Nuclear Receptor Database (Nuclea
 containing 3016 NR sequences which are phylogenetically classified into seven subfamilies with
 each subfamily containing NR sequences from different animal species.
 
+#Feature generation using iFeature package
+
+Feature generation was done using the standalone version of iFeature package as per the instructions described in the github repository at https://github.com/Superzchen/iFeature. iFeature is an open source Python-based toolkit for generating a multitude of descriptors for protein and peptide sequences. 
+For this study we calculated 13,494 descriptors which belong to seven descriptor groups shown in table 6. We downloaded iFeature package provided in their github repository and followed the instructions to calculate the above mentioned seven descriptor group individually which were concatenated later leading to 13,494 descriptors.              
+
 ## Script Description
 
 #### main.py
@@ -94,9 +96,4 @@ Run NRPreTo
 ```bash
   python3 main.py 
 ```
-
-
-## Feedback
-
-If you have any feedback, please reach out to us at serdar.bozdag@unt.edu
 
