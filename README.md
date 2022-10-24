@@ -39,6 +39,11 @@ To run NRPreTo with different combination of settings at both level, run the fol
   #for example if user wants to perform hyper-parameters tune but not feature selection, execute following line of code
   python3 main.py --feature_selection = 0 --hyperparameter_tune = 1
 ```
+## How to genrate descriptors using iFeature package
+
+Feature generation was done using the standalone version of iFeature package as per the instructions described in the github repository at https://github.com/Superzchen/iFeature. iFeature is an open source Python-based toolkit for generating a multitude of descriptors for protein and peptide sequences. 
+For this study we calculated 13,494 descriptors which belong to seven descriptor groups shown in table 6. We downloaded iFeature package provided in their github repository locally and followed the instructions to calculate the above mentioned seven descriptor group individually which were concatenated later leading to 13,494 descriptors.  
+
 ## Data Folder
 
 We have provided subsets of following dataset for user to test NRPreTo.
@@ -49,12 +54,7 @@ We have provided subsets of following dataset for user to test NRPreTo.
 
 Both benchmark datasets were prepared from the Nuclear Receptor Database (NucleaRDB Release 5.0) 
 containing 3016 NR sequences which are phylogenetically classified into seven subfamilies with
-each subfamily containing NR sequences from different animal species.
-
-#Feature generation using iFeature package
-
-Feature generation was done using the standalone version of iFeature package as per the instructions described in the github repository at https://github.com/Superzchen/iFeature. iFeature is an open source Python-based toolkit for generating a multitude of descriptors for protein and peptide sequences. 
-For this study we calculated 13,494 descriptors which belong to seven descriptor groups shown in table 6. We downloaded iFeature package provided in their github repository and followed the instructions to calculate the above mentioned seven descriptor group individually which were concatenated later leading to 13,494 descriptors.              
+each subfamily containing NR sequences from different animal species.           
 
 ## Script Description
 
@@ -72,8 +72,6 @@ This script is comprised of helper functions that are used to build the method.
 
 #### model_eval.py
 This script is used to evaluate model at 2 different levels. This scripts provides both confusion matrix and model performance in terms of F1, Accuracy, Presicion, Recall, ROC-AUC score and Mathews Correlation Coefficient.
-
-
 
 
 ## Run Locally
