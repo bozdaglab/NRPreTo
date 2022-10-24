@@ -90,10 +90,10 @@ and external protein dataset.
 This is a main script. User need to run this script to run NRPreTo. 
 
 #### hyperparameter_tune.py
-This scripts uses Hyperopt package in order to select best hyperparameters for RF model. User can edit 'Space' (line 13) dictionary in order to change hyperparameter range pool. User can also change scoring method (line 26) in order to change metrics to evaluate models with different hyperparameters.
+This scripts uses Hyperopt package in order to select best hyperparameters for NRPreTo model.
 
 #### feature_rank.py
-This scripts uses Borutapy package in order to select important features for RF model. User can edit RF models hyperparameters (line 12) to be used for feature ranking.
+This scripts uses Borutapy package in order to select important features to train NRPreTo model.
 
 #### utilities.py
 This script is comprised of helper functions that are used to build the method.
@@ -101,8 +101,8 @@ This script is comprised of helper functions that are used to build the method.
 #### model_eval.py
 This script is used to evaluate model at 2 different levels. This scripts provides both confusion matrix and model performance in terms of F1, Accuracy, Presicion, Recall, ROC-AUC score and Mathews Correlation Coefficient.
 
-
-
+#### conf.int
+This is a configuration file for hyper-parameters tuning script (feature_rank.py). User can change hyper-paramter range by editing following this file.
 
 ## Run Locally
 
